@@ -1,7 +1,7 @@
 import React from "react";
-import banner1 from '../../../assets/image/banner1.jpg';
-import banner2 from '../../../assets/image/banner2.png';
-import banner3 from '../../../assets/image/banner3.jpg';
+import banner1 from '../../../assets/image/banner/banner1.jpg';
+import banner2 from '../../../assets/image/banner/banner2.png';
+import banner3 from '../../../assets/image/banner/banner3.jpg';
 
 const Carousel = () => {
   return (
