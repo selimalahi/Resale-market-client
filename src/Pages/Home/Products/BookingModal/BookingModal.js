@@ -1,8 +1,37 @@
 import React from "react";
 
-const BookingModal = ({singleProduct}) => {
-    
-    const {productName} =singleProduct;
+const BookingModal = ({ singleProduct,  setSingleProducts }) => {
+  const { productName, resale_price} = singleProduct;
+
+
+  const handleBooking =event =>{
+    event.preventDefault();
+    const form =event.target;
+    const name =form.name.value;
+    const email =form.email.value;
+    const phone =form.phone.value;
+    const location =form.location.value;
+    const productName =form.productName.value;
+    const price =form.price.value;
+    // console.log(name, email, phone,productName, location);
+
+
+    const booking ={
+        name,
+        productName,
+        email,
+        phone,
+        location,
+        price
+
+    }
+    console.log(booking)
+    setSingleProducts(null);
+
+
+
+
+  }
 
   return (
     <>
@@ -15,13 +44,88 @@ const BookingModal = ({singleProduct}) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-            {productName}
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          <h3 className="text-2xl font-bold text-center text-green-500">{productName}</h3>
+          <form onSubmit={handleBooking} className=" grid grid-cols-1 gap-2 mt-10">
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Email Address</span>
+              </label>
+              <input
+                // disabled
+                type="email"
+                name="email"
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">User Name</span>
+              </label>
+              <input
+            //   disabled
+                type="text"
+                name= "name"
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Product Name</span>
+              </label>
+              <input
+              disabled
+                type="text"
+                name="productName"
+                value={productName}
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <input
+            //   disabled
+                type="text"
+                name="price"
+                value={resale_price}
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Phone Number</span>
+              </label>
+              <input
+                type="text"
+                name="phone"
+                placeholder="phone number"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Location</span>
+              </label>
+              <input
+                type="text"
+                name="location"
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>          
+
+            <br />
+            <input
+              className="btn btn-accent w-full"
+              type="submit"
+              value="Submit"
+            />
+          </form>
         </div>
       </div>
     </>

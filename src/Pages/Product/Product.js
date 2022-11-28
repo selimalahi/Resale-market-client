@@ -22,7 +22,9 @@ const Product = () => {
         </div>
           { singleProduct &&
             <BookingModal
+            
             singleProduct={singleProduct}
+            setSingleProducts={setSingleProducts}
             ></BookingModal>
           }
         </section>
