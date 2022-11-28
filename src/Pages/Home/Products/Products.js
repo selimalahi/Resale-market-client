@@ -1,6 +1,6 @@
 import React from "react";
 
-const Products = ({ products }) => {
+const Products = ({ products, setSingleProducts }) => {
   const {
     img,
     productName,
@@ -56,9 +56,14 @@ const Products = ({ products }) => {
           <p className="text-white text-sm text-bold border-2 rounded-2xl p-2 bg-slate-900">
             post: {date}
           </p>
-        </div>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        </div> 
+        <div className="card-actions justify-end">         
+          <label 
+          htmlFor="booking-modal"
+         className="btn btn-primary"
+         onClick={() => setSingleProducts(products)}
+         >Book Now</label>
+
         </div>
       </div>
     </div>
