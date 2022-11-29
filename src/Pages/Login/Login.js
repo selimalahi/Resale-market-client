@@ -27,9 +27,26 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result =>{
             const user =result.user;
+            setLoginUserEmail(user.email);
+            saveUser(user.displayName, user.email, 'buyer');
             console.log(user);
         })
     }
+
+    const saveUser = (name, email, role ) => {
+        const user = { name, email, role };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+           
+          });
+      };
 
     const handleLogin = data => {
         console.log(data);

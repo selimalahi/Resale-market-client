@@ -7,7 +7,7 @@ import Product from './../../Pages/Product/Product';
 import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 import DashboardLayout from './../../Layout/DashboardLayout';
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
-import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import AllUsers from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
 
 
  const router =createBrowserRouter([

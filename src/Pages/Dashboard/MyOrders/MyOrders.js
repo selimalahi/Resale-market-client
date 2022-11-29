@@ -7,12 +7,12 @@ const MyOrders = () => {
     
     const {user} = useContext(AuthContext);
 
-    const uri =`http://localhost:5000/bookings?email=${user?.email}`;
+    const url =`http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: Bookings = [] } = useQuery({
-        queryKey: ['booking', user?.email],
+    const { data: bookings  = [] } = useQuery({
+        queryKey: ['bookings', user?.email],
         queryFn: async () =>{
-            const res = await fetch(uri, {
+            const res = await fetch(url, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -42,7 +42,7 @@ const MyOrders = () => {
           </thead>
           <tbody className="mt-6">
             {
-                Bookings.map((booking, i) =><tr key={booking._id}>
+                bookings.map((booking, i) =><tr key={booking._id}>
                     <th>{i+1}</th>
                     <td>{booking.img}</td>
                     <td>{booking.productName}</td>
