@@ -4,10 +4,12 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import Product from './../../Pages/Product/Product';
-import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
+// import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 import DashboardLayout from './../../Layout/DashboardLayout';
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
-import AllUsers from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
+// import AllUsers from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
+import AllUsersAndSeller from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
+import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 
 
  const router =createBrowserRouter([
@@ -45,8 +47,12 @@ import AllUsers from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller"
             },
             {
                 path:'/dashboard/allusers',
-                element:<AllUsers></AllUsers>
+                element:<AllUsersAndSeller></AllUsersAndSeller>
             },
+            {
+                path:'/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            }
 
         ]
     }

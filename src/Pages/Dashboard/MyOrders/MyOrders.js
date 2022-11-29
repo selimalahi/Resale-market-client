@@ -47,7 +47,7 @@ const MyOrders = () => {
                     <td>{booking.img}</td>
                     <td>{booking.productName}</td>
                     <td>{booking.price}</td>
-                    <button ><td className="btn btn-accent ml-2 ">Pay Now</td></button>
+                    <button><td className="btn btn-accent ml-2 ">Pay Now</td></button>
                     
                   </tr>)
             }          
