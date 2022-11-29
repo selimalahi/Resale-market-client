@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from './../../../../contexts/AuthProvider';
 
 const BookingModal = ({ singleProduct,  setSingleProducts }) => {
-  const { productName, resale_price} = singleProduct;
+  const { productName, resale_price, img} = singleProduct;
 
 
   const {user} = useContext(AuthContext);
@@ -18,6 +18,7 @@ const BookingModal = ({ singleProduct,  setSingleProducts }) => {
     const location =form.location.value;
     const productName =form.productName.value;
     const price =form.price.value;
+    const img = form.img.value;
     // console.log(name, email, phone,productName, location);
 
 
@@ -27,7 +28,9 @@ const BookingModal = ({ singleProduct,  setSingleProducts }) => {
         email,
         phone,
         location,
-        price
+        price,
+        img
+        
 
     }
     fetch('http://localhost:5000/bookings',{
@@ -140,6 +143,18 @@ const BookingModal = ({ singleProduct,  setSingleProducts }) => {
                 className="input input-bordered w-full "
               />
             </div>          
+            {/* <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Image</span>
+              </label>
+              <input
+                type="text"
+                name="img"
+                value={img}
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>           */}
 
             <br />
             <input

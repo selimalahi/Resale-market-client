@@ -4,6 +4,9 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import Product from './../../Pages/Product/Product';
+import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
+import DashboardLayout from './../../Layout/DashboardLayout';
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 
 
  const router =createBrowserRouter([
@@ -30,6 +33,16 @@ import Product from './../../Pages/Product/Product';
             
         }
        ] 
+    },
+    {
+        path:'/dashboard',
+        element:<DashboardLayout></DashboardLayout>,
+        children:[
+            {
+                path:'/dashboard',
+                element:<MyOrders></MyOrders>
+            }
+        ]
     }
 ])
 export default router;
