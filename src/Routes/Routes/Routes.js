@@ -16,6 +16,7 @@ import DisplayError from "../../Shared/DisplayError/DisplayError";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import Blog from "../../Pages/Blog/Blog";
 
 
 
@@ -28,6 +29,10 @@ import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+            path:'/blog',
+            element:<Blog></Blog>
         },
         {
             path:'/login',
