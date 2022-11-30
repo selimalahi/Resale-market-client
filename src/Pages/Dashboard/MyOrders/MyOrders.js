@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
 
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
@@ -17,6 +18,7 @@ const MyOrders = () => {
         },
       });
       const data = await res.json();
+      console.log(data);
       return data;
     },
   });
@@ -46,11 +48,11 @@ const MyOrders = () => {
                 <td>
                   {booking.price && !booking.paid && (
                     <Link to={`/dashboard/payment/${booking._id}`}>
-                      <button className="btn btn-accent ml-2 ">Pay</button>
+                      <button className="btn btn-primary btn-sm">Pay</button>
                     </Link>
                   )}
                   {booking.price && booking.paid && (
-                    <span className="text-primary">Paid</span>
+                    <span className="text-green-500">Paid</span>
                   )}
                 </td>
               </tr>

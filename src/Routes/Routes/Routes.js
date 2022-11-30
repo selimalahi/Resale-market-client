@@ -13,6 +13,9 @@ import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import DisplayError from "../../Shared/DisplayError/DisplayError";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 
 
 
@@ -60,8 +63,12 @@ import DisplayError from "../../Shared/DisplayError/DisplayError";
                 element:<AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             {
+                path:'/dashboard',
+                element:<AddProduct></AddProduct>
+            },
+            {
                 path:'/dashboard/payment/:id',
-                element:<AdminRoute><Payment></Payment></AdminRoute>,
+                element:<Payment></Payment>,
                 loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
                 
             }

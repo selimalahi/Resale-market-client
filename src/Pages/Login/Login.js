@@ -7,7 +7,7 @@ import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn, providerLogin  } = useContext(AuthContext);
+    const { signIn, providerLogin, setUser  } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
@@ -27,6 +27,7 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result =>{
             const user =result.user;
+            setUser(user);
             setLoginUserEmail(user.email);
             saveUser(user.displayName, user.email, 'buyer');
             console.log(user);
