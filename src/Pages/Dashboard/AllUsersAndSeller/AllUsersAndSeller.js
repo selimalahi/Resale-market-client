@@ -1,8 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
+import ConfirmationModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
 
 const AllUsersAndSeller = () => {
+  const [deletingUser, setDeletingUser] = useState(null);
+
+  const closeModal = () => {
+    setDeletingUser(null);
+  };
+
+  const handleDeleteUser = user =>{
+    fetch(`http://localhost:5000/users/${user._id}`, {
+            method: 'DELETE', 
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+
+          if(data.deletedCount > 0){
+            refetch();
+            toast.success(`User ${user.name} deleted successfully`)
+        }
+          
+        })
+  }
+
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -61,13 +86,29 @@ const AllUsersAndSeller = () => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-xs btn-danger">Delete</button>
+                  <label
+                    onClick={() => setDeletingUser(user)}
+                    htmlFor="confirmation-modal"
+                    className="btn btn-sm btn-error"
+                  >
+                    Delete
+                  </label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {deletingUser && (
+        <ConfirmationModal
+          title={`Are you sure you want to delete`}
+          message={`If you Delete ${deletingUser.name}. it cannot be undone`}
+          successAction = {handleDeleteUser}
+          successButtonName="Delete"
+          modalData = {deletingUser}
+          closeModal={closeModal}
+        ></ConfirmationModal>
+      )}
     </div>
   );
 };

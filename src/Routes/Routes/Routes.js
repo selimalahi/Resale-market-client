@@ -10,12 +10,17 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 // import AllUsers from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
 import AllUsersAndSeller from "../../Pages/Dashboard/AllUsersAndSeller/AllUsersAndSeller";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
+import DisplayError from "../../Shared/DisplayError/DisplayError";
+
 
 
  const router =createBrowserRouter([
     {
        path:'/',
        element:<Main></Main>,
+       errorElement:<DisplayError></DisplayError>,
        children:[
         {
             path:'/',
@@ -40,6 +45,7 @@ import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
     {
         path:'/dashboard',
         element:<DashboardLayout></DashboardLayout>,
+        errorElement: <DisplayError></DisplayError>,
         children:[
             {
                 path:'/dashboard',
@@ -47,11 +53,17 @@ import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
             },
             {
                 path:'/dashboard/allusers',
-                element:<AllUsersAndSeller></AllUsersAndSeller>
+                element:<AdminRoute><AllUsersAndSeller></AllUsersAndSeller></AdminRoute>
             },
             {
                 path:'/dashboard/allseller',
-                element: <AllSeller></AllSeller>
+                element:<AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element:<AdminRoute><Payment></Payment></AdminRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                
             }
 
         ]
