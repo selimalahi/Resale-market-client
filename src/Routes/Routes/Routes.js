@@ -18,6 +18,7 @@ import SellerRoute from "../SellerRoute/SellerRoute";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import Blog from "../../Pages/Blog/Blog";
 import Error from "../../Pages/Error/Error";
+import PrivateRoutes from './../PrivateRotes/PrivateRoute';
 
 
 
@@ -53,7 +54,7 @@ import Error from "../../Pages/Error/Error";
     },
     {
         path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
+        element:<PrivateRoutes><DashboardLayout></DashboardLayout>,</PrivateRoutes>,
         errorElement: <DisplayError></DisplayError>,
         children:[
             // {
@@ -61,8 +62,8 @@ import Error from "../../Pages/Error/Error";
             //     element:<h1>hello</h1>
             // },
             {
-                path:'/dashboard',
-                element:<MyOrders></MyOrders>
+                path:'/dashboard/myorders',
+                element:<BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path:'/dashboard/allusers',
@@ -72,9 +73,10 @@ import Error from "../../Pages/Error/Error";
                 path:'/dashboard/allseller',
                 element:<AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
+        
             {
-                path:'/dashboard',
-                element:<AddProduct></AddProduct>
+                path:'/dashboard/addproducts',
+                element:<SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path:'/dashboard/payment/:id',

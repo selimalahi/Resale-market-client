@@ -78,7 +78,8 @@ const CheckoutForm = ({booking}) => {
             price,
             transactionId: paymentIntent.id,
             email,
-            bookingId: _id
+            bookingId: _id,
+            
         }
 
         fetch('https://doctors-portal-server-rust.vercel.app/payments', {

@@ -1,31 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 import useAdmin from "../hooks/useAdmin";
-// import useBuyer from "../hooks/useBuyer";
+import useBuyer from "../hooks/useBuyer";
+import useSeller from "../hooks/useSeller";
 
 import Navbar from "../Shared/Navbar/Navbar";
+
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
-  const [buyer, setBuyer] =useState((false));
+  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
+ 
+  
+
+  // const [buyer, setBuyer] =useState((false));
   // const [seller, setSeller] =useState((false));
 
   // const buyer =useBuyer(user?.email);
   // console.log(buyer);
-     useEffect(() => {
-      if (user?.email) {
-          fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${user?.email}`)
-              .then(res => res.json())
-              .then(data => {
-                  console.log(data);
-                  setBuyer(data.buyer);
-                  // setIsBuyerLoading(false);
-              })
-      }
-  }, [user])
+  //    useEffect(() => {
+  //     if (user?.email) {
+  //         fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${user?.email}`)
+  //             .then(res => res.json())
+  //             .then(data => {
+  //                 console.log(data);
+  //                 setBuyer(data.buyer);
+  //                 // setIsBuyerLoading(false);
+  //             })
+  //     }
+  // }, [user])
 
   //    useEffect(() => {
   //     if (user?.email) {
@@ -61,16 +68,24 @@ const DashboardLayout = () => {
             
             
                
-              <li>
-                  <Link to="/dashboard">Seller</Link>
+             {isSeller && (
+                <>
+                 <li>
+                  <Link to="/dashboard/addproducts">Add Product</Link>
                 </li>
+                </>
+              )
+              
+              
+             }
               
             
                 {
-                  buyer &&<>
+                  isBuyer &&<>
                   <li>
-                  <Link to="/dashboard">My Orders</Link>
+                  <Link to="/dashboard/myorders">My Orders</Link>
                 </li>
+                
                   </>
                 }
 
