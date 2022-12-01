@@ -36,7 +36,7 @@ const Login = () => {
 
     const saveUser = (name, email, role ) => {
         const user = { name, email, role };
-        fetch("https://car-resale-market-server-site.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

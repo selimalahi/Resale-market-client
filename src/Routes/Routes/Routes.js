@@ -47,7 +47,7 @@ import PrivateRoutes from './../PrivateRotes/PrivateRoute';
         {
             path:'/product/:id',
             element:<Product></Product>,
-            loader: ({params}) => fetch(`https://car-resale-market-server-site.vercel.app/product/${params.id}`)
+            loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
             
         }
        ] 
@@ -81,7 +81,7 @@ import PrivateRoutes from './../PrivateRotes/PrivateRoute';
             {
                 path:'/dashboard/payment/:id',
                 element:<Payment></Payment>,
-                loader: ({params}) => fetch(`https://car-resale-market-server-site.vercel.app/bookings/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
                 
             }
 

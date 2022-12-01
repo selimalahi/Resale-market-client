@@ -24,7 +24,7 @@ const DashboardLayout = () => {
   // console.log(buyer);
   //    useEffect(() => {
   //     if (user?.email) {
-  //         fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${user?.email}`)
+  //         fetch(`http://localhost:5000/users/buyer/${user?.email}`)
   //             .then(res => res.json())
   //             .then(data => {
   //                 console.log(data);
@@ -36,7 +36,7 @@ const DashboardLayout = () => {
 
   //    useEffect(() => {
   //     if (user?.email) {
-  //         fetch(`https://car-resale-market-server-site.vercel.app/users/seller/${user?.email}`)
+  //         fetch(`http://localhost:5000/users/seller/${user?.email}`)
   //             .then(res => res.json())
   //             .then(data => {
   //                 console.log(data);

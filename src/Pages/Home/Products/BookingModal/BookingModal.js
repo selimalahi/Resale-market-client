@@ -33,7 +33,7 @@ const BookingModal = ({ singleProduct,  setSingleProducts }) => {
         
 
     }
-    fetch('https://car-resale-market-server-site.vercel.app/bookings',{
+    fetch('http://localhost:5000/bookings',{
         method: 'POST',
         headers:{
             'content-type': 'application/json'

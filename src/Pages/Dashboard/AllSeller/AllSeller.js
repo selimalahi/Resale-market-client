@@ -7,7 +7,7 @@ const AllSeller = () => {
     const {data: allusers = [], refetch } =useQuery({
         queryKey:['allusers'],
         queryFn: async() =>{
-            const res = await fetch('https://car-resale-market-server-site.vercel.app/allusers?role=seller');
+            const res = await fetch('http://localhost:5000/allusers?role=seller');
             const data = await res.json();
             return data;
         }
@@ -24,7 +24,7 @@ const AllSeller = () => {
 
 
     const handleDeleteseller = user =>{
-      fetch(`https://car-resale-market-server-site.vercel.app/seller/${user._id}`, {
+      fetch(`http://localhost:5000/seller/${user._id}`, {
               method: 'DELETE', 
               headers: {
                   authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const AllSeller = () => {
     // const { data: seller = [], refetch } = useQuery({
     //   queryKey: ["seller"],
     //   queryFn: async () => {
-    //     const res = await fetch("https://car-resale-market-server-site.vercel.app/seller");
+    //     const res = await fetch("http://localhost:5000/seller");
     //     const data = await res.json();
     //     return data;
     //   },

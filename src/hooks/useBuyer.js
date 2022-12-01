@@ -5,7 +5,7 @@ const useBuyer = (email) => {
     const [isBuyerLoading, setIsBuyerLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${email}`)
+            fetch(`http://localhost:5000/users/buyer/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -26,7 +26,7 @@ export default useBuyer;
     
 //     useEffect(() => {
 //         if (email) {
-//             fetch(`https://car-resale-market-server-site.vercel.app/users/admin/${email}`)
+//             fetch(`http://localhost:5000/users/admin/${email}`)
 //                 .then(res => res.json())
 //                 .then(data => {
 //                     console.log(data);
