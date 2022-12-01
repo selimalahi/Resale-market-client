@@ -1,30 +1,45 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
-// import useBuyer from "../hooks/useBuyer";
+
 import useAdmin from "../hooks/useAdmin";
 // import useBuyer from "../hooks/useBuyer";
+
 import Navbar from "../Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
-  // const [isBuyer] = useBuyer(user?.email);
-  console.log(user);
+  const [buyer, setBuyer] =useState((false));
+  // const [seller, setSeller] =useState((false));
 
-  //   useEffect(() => {
+  // const buyer =useBuyer(user?.email);
+  // console.log(buyer);
+     useEffect(() => {
+      if (user?.email) {
+          fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${user?.email}`)
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data);
+                  setBuyer(data.buyer);
+                  // setIsBuyerLoading(false);
+              })
+      }
+  }, [user])
+
+  //    useEffect(() => {
   //     if (user?.email) {
-  //         fetch(`http://localhost:5000/users/buyer/${user?.email}`)
+  //         fetch(`https://car-resale-market-server-site.vercel.app/users/seller/${user?.email}`)
   //             .then(res => res.json())
   //             .then(data => {
   //                 console.log(data);
-  //                 // setIsBuyer(data.isBuyer);
+  //                 setSeller(data.seller);
   //                 // setIsBuyerLoading(false);
   //             })
   //     }
-  // }, [user])
+  // }, [user]) 
 
-  // console.log({isAdmin});
+  // console.log(seller);
   return (
     <div>
       <Navbar></Navbar>
@@ -43,12 +58,21 @@ const DashboardLayout = () => {
             {/* <!-- Sidebar content here --> */}
 
            
-            <li>
+            
+            
+               
+              <li>
                   <Link to="/dashboard">Seller</Link>
                 </li>
-                <li>
+              
+            
+                {
+                  buyer &&<>
+                  <li>
                   <Link to="/dashboard">My Orders</Link>
                 </li>
+                  </>
+                }
 
             {isAdmin && (
               <>

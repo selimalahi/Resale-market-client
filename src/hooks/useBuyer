@@ -1,17 +1,38 @@
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
-const useBuyer =email =>{
-    const [isBuyer, setIsBuyer] =useState(false);
-    useEffect( () =>{
-        if(email) {
-            fetch(`http://localhost:5000/users/buyer/${email}`)
-            .then( res => res.json())
-            .then(data => {
-                console.log(data)
-                setIsBuyer(data.isBuyer);
-            })
-        }
-    }, [email])
-    return [isBuyer]
-}
-export default useBuyer;
+// const useBuyer =email =>{
+//     const [buyer, setBuyer]=useState(false);
+//     useEffect( () =>{
+//         if(email) {
+//             fetch(`https://car-resale-market-server-site.vercel.app/users/buyer/${email}`)
+//             .then( res => res.json())
+//             .then(data => {
+//                 console.log(data)
+//                 setBuyer(data.buyer);
+//             })
+//         }
+//     }, [email])
+//     return [buyer]
+// }
+// export default useBuyer;
+
+// import { useEffect, useState } from "react"
+
+// const useBuyer = email => {
+//     const [buyer, setBuyer] = useState(false);
+    
+//     useEffect(() => {
+//         if (email) {
+//             fetch(`https://car-resale-market-server-site.vercel.app/users/admin/${email}`)
+//                 .then(res => res.json())
+//                 .then(data => {
+//                     console.log(data);
+//                     setBuyer(data.buyer);
+//                     // setIsAdminLoading(false);
+//                 })
+//         }
+//     }, [email])
+//     return [buyer]
+// }
+
+// export default useBuyer;

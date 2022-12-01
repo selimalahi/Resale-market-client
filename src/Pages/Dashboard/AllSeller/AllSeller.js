@@ -5,7 +5,7 @@ const AllSeller = () => {
     const {data: allusers = [] } =useQuery({
         queryKey:['allusers'],
         queryFn: async() =>{
-            const res = await fetch('http://localhost:5000/allusers?role=seller');
+            const res = await fetch('https://car-resale-market-server-site.vercel.app/allusers?role=seller');
             const data = await res.json();
             return data;
         }

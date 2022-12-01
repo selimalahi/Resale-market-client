@@ -17,6 +17,7 @@ import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import Blog from "../../Pages/Blog/Blog";
+import Error from "../../Pages/Error/Error";
 
 
 
@@ -45,7 +46,7 @@ import Blog from "../../Pages/Blog/Blog";
         {
             path:'/product/:id',
             element:<Product></Product>,
-            loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+            loader: ({params}) => fetch(`https://car-resale-market-server-site.vercel.app/product/${params.id}`)
             
         }
        ] 
@@ -55,6 +56,10 @@ import Blog from "../../Pages/Blog/Blog";
         element:<DashboardLayout></DashboardLayout>,
         errorElement: <DisplayError></DisplayError>,
         children:[
+            // {
+            //     path:'/dashboard',
+            //     element:<h1>hello</h1>
+            // },
             {
                 path:'/dashboard',
                 element:<MyOrders></MyOrders>
@@ -74,11 +79,12 @@ import Blog from "../../Pages/Blog/Blog";
             {
                 path:'/dashboard/payment/:id',
                 element:<Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({params}) => fetch(`https://car-resale-market-server-site.vercel.app/bookings/${params.id}`)
                 
             }
 
         ]
-    }
+    },
+    {path:'*',element:<Error></Error>}, 
 ])
 export default router;

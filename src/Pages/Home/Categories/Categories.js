@@ -10,14 +10,14 @@ const Categories = () => {
 
     const {data:categoriesData =[]} = useQuery({
         queryKey: ['categoriesData'],
-        queryFn: () => fetch('http://localhost:5000/categoriesData')
+        queryFn: () => fetch('https://car-resale-market-server-site.vercel.app/categoriesData')
         .then(res => res.json())
     })
 
 
 
     // useEffect( () =>{
-    //     fetch('http://localhost:5000/categoriesData')
+    //     fetch('https://car-resale-market-server-site.vercel.app/categoriesData')
     //     .then(res => res.json())
     //     .then(data =>setServices(data)))
     // }, [])
