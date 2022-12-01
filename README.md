@@ -24,3 +24,6 @@ Website name------>
 7) image bb
 
 -->
+
+8) admin email: hasib@gmail.com
+9) password: Hasib1@
