@@ -1,6 +1,6 @@
 Website name------>
    resale market
-----> live server link----> https://resale-car-market.web.app
+----> live server link----> http://localhost:5000
 
 
 ------> mean feature Website-----> 1)------> firebase setup----> * create firebase project * install firebase * create firebase config.js file * export app form config.js mongo db atlas hooks ,
