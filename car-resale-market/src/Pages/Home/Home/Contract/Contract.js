@@ -48,5 +48,4 @@ const Contract = () => {
     </div>
   );
 };
-
 export default Contract;
